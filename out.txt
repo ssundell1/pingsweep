@@ -1,3 +1,0 @@
-Starting network scan 2022-04-14 22:49:03.201582
-Active hosts:
-192.168.0.1
