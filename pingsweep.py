@@ -120,6 +120,7 @@ def main():
     print("::: NETWORK SCANNER :::")
     if output_file:
         write_to_log("Starting network scan "+str(datetime.datetime.now()), output_file)
+        write_to_log("Active hosts:", output_file)
 
     for network in networks:
         success, msg, hosts = get_hosts_for_network(network,verbosity)
@@ -128,12 +129,10 @@ def main():
             if ping(host, timeout):
                 print("[+] "+host+" - up!")
                 if output_file:
-                    write_to_log("[+] "+host+" - up!", output_file)
+                    write_to_log(host, output_file)
             else:
                 if verbosity > 0:
                     print("[ ] "+host+" - down")
-                    if output_file:
-                        write_to_log("[ ] "+host+" - down", output_file)
 
     
 
