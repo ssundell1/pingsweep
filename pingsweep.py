@@ -5,6 +5,7 @@
 import argparse
 import datetime
 import os
+import platform
 import sys
 
 def parse_args():
@@ -31,7 +32,12 @@ def write_to_log(msg, output_file = ""):
     return
 
 def ping(host, timeout):
-    cmd = 'ping -n 1 -w '+str(timeout)+' '+host
+    cmd = 'ping'
+    if platform.system().lower() == "windows":
+        cmd += ' -n 1'
+    else:
+        cmd += ' -c 1'
+    cmd += ' -w '+str(timeout)+' '+host
     ping_result = os.popen(cmd).read()
     if "time=" in ping_result:
         return True
