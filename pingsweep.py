@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 # Ping sweeper
 # ssundell1
 # 2021-09-11
